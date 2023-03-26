@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :acronym, null: true
       t.date :birth_date, null: true
       t.belongs_to :city, null: false, foreign_key: true
+      t.belongs_to :promotion, null: true, foreign_key: true
       t.timestamps
     end
   end
