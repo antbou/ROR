@@ -60,13 +60,14 @@
         </svg>
       </button>
       <div data-dropdown-target="menu" class="md:hidden flex z-50 absolute top-[var(--h-navbar)] left-0 right-0 inset-x-0 bg-white border border-gray-200 shadow-sm rounded-md">
-        <div className="mx-2 w-full">
-          <div className="flex flex-col gap-4">
-            <a className="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Home</a>
-            <a className="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Catagory</a>
-            <a className="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Collections</a>
-            <a className="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Contact Us</a>
+        <div class="mx-2 w-full">
+          <div class="flex flex-col">
+            <a class="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Home</a>
+            <a class="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Catagory</a>
+            <a class="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Collections</a>
+            <a class="block px-4 py-2 text-md hover:text-gray-200" href="#" data-action="dropdown#toggle">Contact Us</a>
           </div>
+          <hr class="border-gray-200 pt-2">
           <% if current_user %>
             <div class="block px-4 py-2">
               <span class="block text-sm p-5">Bonnie Green</span>
