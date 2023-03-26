@@ -1,6 +1,8 @@
-class Role < ApplicationRecord
-    validates :slug, presence: true
-    validates :name, presence: true
+# frozen_string_literal: true
 
-    has_many :people, through: :person_roles
+class Role < ApplicationRecord
+  validates :slug, presence: true
+  validates :name, presence: true
+
+  has_many :people, through: :person_roles
 end

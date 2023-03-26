@@ -1,7 +1,9 @@
-class Promotion < ApplicationRecord
-    validates :name, presence: true
-    validates :start_at, presence: true
-    validates :end_at, presence: true
+# frozen_string_literal: true
 
-    has_many :students, through: :student_promotions
+class Promotion < ApplicationRecord
+  validates :name, presence: true
+  validates :start_at, presence: true
+  validates :end_at, presence: true
+
+  has_many :students, through: :student_promotions
 end

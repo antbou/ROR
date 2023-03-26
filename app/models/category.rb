@@ -1,6 +1,8 @@
-class Category < ApplicationRecord
-    validates :name, presence: true
-    validates :slug, presence: true
+# frozen_string_literal: true
 
-    belongs_to :category
+class Category < ApplicationRecord
+  validates :name, presence: true
+  validates :slug, presence: true
+
+  belongs_to :category
 end
