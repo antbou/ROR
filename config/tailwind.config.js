@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      height: {
+        navbar: 'var(--h-navbar)',
+      },
     },
   },
   plugins: [
