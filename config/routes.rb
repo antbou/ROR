@@ -3,7 +3,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  # authenticated :student do
+  #   resources :subjects, module: "student", :only => [:show, :index]
+  # end
+
+  # authenticated :teacher do
+  #     resources :subjects, module: "teacher"
+  # end
+
   root to: "home#index"
-  devise_for :students
+  devise_for :students, controllers: { registrations: "students/registrations" }
   devise_for :teachers
 end
