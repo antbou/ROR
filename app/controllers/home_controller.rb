@@ -6,6 +6,7 @@ class HomeController < ApplicationController
       @evaluations = current_user.evaluations
       render 'student_home'
     elsif current_user && current_user.teacher?
+      @courses = current_user.courses
       render 'teacher_home'
     else
       render 'home'
