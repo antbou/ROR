@@ -28,11 +28,25 @@ teacher.courses << course1
 teacher.courses << course2
 teacher.courses << course3
 
-exam1 = Exam.create!(name: 'Mathématiques', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course1,
+exam1 = Exam.create!(name: 'Trigo', consideration: 100, passed_at: Date.new(2021, 9, 30),
+                     course: course1, teacher:)
+exam2 = Exam.create!(name: 'Algébre', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course1, teacher:)
+exam3 = Exam.create!(name: 'Physique 1', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2,
                      teacher:)
-exam2 = Exam.create!(name: 'Physique', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2, teacher:)
-
-evaluation1 = Evaluation.create!(grade: 10, student: student1, exam: exam1, teacher:)
-evaluation2 = Evaluation.create!(grade: 10, student: student2, exam: exam1, teacher:)
-evaluation3 = Evaluation.create!(grade: 10, student: student1, exam: exam2, teacher:)
-evaluation4 = Evaluation.create!(grade: 10, student: student2, exam: exam2, teacher:)
+exam4 = Exam.create!(name: 'Physique 2', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2,
+                     teacher:)
+exam5 = Exam.create!(name: 'Chimie 1', consideration: 33, passed_at: Date.new(2021, 9, 30), course: course3, teacher:)
+exam6 = Exam.create!(name: 'Chimie 2', consideration: 22, passed_at: Date.new(2021, 9, 30), course: course3, teacher:)
+evaluation1 = Evaluation.create!(grade: 5, student: student1, exam: exam1, teacher:)
+evaluation2 = Evaluation.create!(grade: 4, student: student2, exam: exam1, teacher:)
+evaluation3 = Evaluation.create!(grade: 3.5, student: student1, exam: exam2, teacher:)
+evaluation4 = Evaluation.create!(grade: 3, student: student2, exam: exam2, teacher:)
+evaluation5 = Evaluation.create!(grade: 6, student: student1, exam: exam3, teacher:)
+evaluation6 = Evaluation.create!(grade: 2, student: student2, exam: exam3, teacher:)
+evaluation7 = Evaluation.create!(grade: 6, student: student1, exam: exam4, teacher:)
+evaluation8 = Evaluation.create!(grade: 1, student: student2, exam: exam4, teacher:)
+evaluation9 = Evaluation.create!(grade: 3, student: student1, exam: exam5, teacher:)
+evaluation10 = Evaluation.create!(grade: 4.5, student: student1, exam: exam5, teacher:)
+evaluation10 = Evaluation.create!(grade: 6, student: student1, exam: exam5, teacher:)
+evaluation11 = Evaluation.create!(grade: 4.5, student: student2, exam: exam5, teacher:)
+evaluation12 = Evaluation.create!(grade: 4, student: student2, exam: exam5, teacher:)

@@ -1,0 +1,44 @@
+<h1 class="text-3xl font-bold mb-4">Your Grades</h1>
+<% if @evaluations.any? %>
+  <ul class="divide-y divide-gray-200">
+    <% exams = @evaluations.group_by(&:exam) %>
+    <% exams.each do |exam, evaluations| %>
+      <li class="py-4">
+        <div class="flex items-center space-x-4">
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-gray-500 truncate"><%= exam.course.title %></p>
+            <p class="text-sm font-medium text-gray-900 truncate"><%= exam.name %></p>
+          </div>
+          <% if exam.consideration == 100 %>
+            <div>
+              <p class="text-sm font-medium text-gray-900"><%= evaluations.first.grade %>/6</p>
+            </div>
+          <% else %>
+            <% total_grade = evaluations.sum(&:grade) %>
+            <% number_of_grades = (100 / exam.consideration.to_f).round() %>
+            <% if evaluations.count == number_of_grades %>
+              <% exam_grade = total_grade / (100 / exam.consideration.to_f).round %>
+            <% else %>
+              <div class="flex flex-col" >
+                <p class="text-sm">You have not completed all the evaluations for this exam.</p>
+                <% exam_grade = total_grade / evaluations.count %>
+              </div>
+            <% end %>
+            <div>
+              <p class="text-sm font-medium text-gray-900"><%= (exam_grade * 2).round / 2.0  %>/6</p>
+            </div>
+          <% end %>
+        </div>
+        <% if evaluations.length > 1 %>
+          <div class="mt-1 ml-8">
+            <% evaluations.each_with_index do |evaluation, index| %>
+              <p class="text-sm text-gray-500"><%= "Grade #{index+1}: #{evaluation.grade}/6" %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You don't have any grades yet.</p>
+<% end %>

@@ -16,6 +16,14 @@ class User < ApplicationRecord
   before_create :set_city
   accepts_nested_attributes_for :city
 
+  def student?
+    is_a?(Student)
+  end
+
+  def teacher?
+    is_a?(Teacher)
+  end
+
   private
 
   def set_city
