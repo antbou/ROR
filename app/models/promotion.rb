@@ -5,5 +5,6 @@ class Promotion < ApplicationRecord
   validates :start_at, presence: true
   validates :end_at, presence: true
 
-  has_many :students, through: :student_promotions
+  has_many :students
+  has_and_belongs_to_many :courses
 end

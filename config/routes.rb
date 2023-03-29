@@ -1,18 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
-  # authenticated :student do
-  #   resources :subjects, module: "student", :only => [:show, :index]
-  # end
-
-  # authenticated :teacher do
-  #     resources :subjects, module: "teacher"
-  # end
+  resources :courses do
+    resources :exams
+  end
 
   root to: 'home#index'
   devise_for :students, controllers: { registrations: 'students/registrations' }

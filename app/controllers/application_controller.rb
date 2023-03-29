@@ -17,4 +17,14 @@ class ApplicationController < ActionController::Base
       ]
     )
   end
+
+  private
+
+  def only_teacher
+    redirect_to root_path unless current_user.teacher?
+  end
+
+  def not_found
+    raise ActionController::RoutingError, 'Not Found'
+  end
 end

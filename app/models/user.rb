@@ -24,6 +24,10 @@ class User < ApplicationRecord
     is_a?(Teacher)
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   private
 
   def set_city

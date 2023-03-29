@@ -1,0 +1,6 @@
+<div class="mx-auto  w-full">
+  <h1 class="font-bold text-4xl">Editing exam</h1>
+  <%= render "form", course: @course, exam: @exam%>
+  <%= link_to "Show this exam", course_exam_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Back to exams", course_exams_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>

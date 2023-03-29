@@ -6,4 +6,9 @@ class Course < ApplicationRecord
 
   belongs_to :quarter
   belongs_to :category
+  has_many :exams, dependent: :destroy
+
+  has_and_belongs_to_many :promotions
+
+  # attr_accessor :title, :slug, :description, :category_id, :quarter_id, :promotion_ids
 end

@@ -2,9 +2,8 @@
 <ul class="space-y-4">
   <% @courses.each do |course| %>
     <li class="bg-white p-4 rounded-lg shadow">
-      <h2 class="text-lg text-gray-800 mb-2"><%= course.title %></h2>
+      <%= link_to course.title, course_exams_path(course.id), class: "text-lg text-gray-800 mb-2 hover:text-gray-200" %>
       <p class="text-gray-600 mb-4"><%= course.description %></p>
-      <!-- display other course information -->
     </li>
   <% end %>
 </ul>

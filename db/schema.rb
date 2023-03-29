@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_26_102951) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_133557) do
   create_table "categories", force: :cascade do |t|
     t.string "slug"
     t.string "name"
@@ -37,6 +37,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_102951) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_courses_on_category_id"
     t.index ["quarter_id"], name: "index_courses_on_quarter_id"
+  end
+
+  create_table "courses_promotions", force: :cascade do |t|
+    t.integer "promotion_id", null: false
+    t.integer "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_courses_promotions_on_course_id"
+    t.index ["promotion_id"], name: "index_courses_promotions_on_promotion_id"
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -160,6 +169,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_26_102951) do
   add_foreign_key "categories", "categories"
   add_foreign_key "courses", "categories"
   add_foreign_key "courses", "quarters"
+  add_foreign_key "courses_promotions", "courses"
+  add_foreign_key "courses_promotions", "promotions"
   add_foreign_key "evaluations", "exams"
   add_foreign_key "evaluations", "users", column: "student_id"
   add_foreign_key "evaluations", "users", column: "teacher_id"

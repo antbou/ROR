@@ -5,11 +5,13 @@ city = City.create!(name: 'Paris', zip_code: '75000')
 teacher = Teacher.create!(first_name: 'demo', last_name: 'test', email: 'teacher@mail.com',
                           adress: '1 rue de la paix', acronym: 'dmo', city:, password: '123456')
 
+promotion = Promotion.create!(name: 'SIT2a', start_at: Date.new(2021, 9, 1), end_at: Date.new(2022, 6, 30))
+
 # Create demo student
 student1 = Student.create!(first_name: 'deemo', last_name: 'test', email: 'student1@mail.com',
-                           adress: '2 rue michel', city:, password: '123456')
+                           adress: '2 rue michel', city:, password: '123456', promotion:)
 student2 = Student.create!(first_name: 'deemo2', last_name: 'test', email: 'student2@mail.com',
-                           adress: '2 rue michel', city:, password: '123456')
+                           adress: '2 rue michel', city:, password: '123456', promotion:)
 
 semester = Semester.create!(started_at: Date.new(2021, 9, 1), ended_at: Date.new(2021, 12, 31))
 
@@ -50,3 +52,7 @@ evaluation10 = Evaluation.create!(grade: 4.5, student: student1, exam: exam5, te
 evaluation10 = Evaluation.create!(grade: 6, student: student1, exam: exam5, teacher:)
 evaluation11 = Evaluation.create!(grade: 4.5, student: student2, exam: exam5, teacher:)
 evaluation12 = Evaluation.create!(grade: 4, student: student2, exam: exam5, teacher:)
+
+# Add promotions to courses
+course1.promotions << promotion
+course2.promotions << promotion
