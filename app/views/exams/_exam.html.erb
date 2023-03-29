@@ -1,5 +1,6 @@
 <tr class="border-b">
-  <td class="whitespace-nowrap px-6 py-4"><%= exam.name %></td>
+  <td class="whitespace-nowrap px-6 py-4">  <%= link_to exam.name, exam_evaluations_path(exam), class: "hover:text-gray-200" %>
+  </td>
   <td class="whitespace-nowrap px-6 py-4"><%= exam.consideration%></td>
   <td class="whitespace-nowrap px-6 py-4"><%= exam.passed_at%></td>
   <td class="whitespace-nowrap px-6 py-4"><%= exam.teacher.full_name %></td>

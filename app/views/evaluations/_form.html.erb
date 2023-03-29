@@ -1,0 +1,33 @@
+<%= form_with(model: [exam, evaluation], class: "contents") do |form| %>
+  <div class="mx-auto">
+    <div class="flex flex-wrap -m-2">
+      <% if evaluation.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+          <ul>
+            <% evaluation.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :grade, class: "leading-7 text-sm text-gray-600" %>
+          <%= form.number_field :grade, in: 1.0..6, step: 0.5, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :student_id, class: "leading-7 text-sm text-gray-600" %>
+          <%= form.select :student_id, evaluation.exam.students.map { |student| [student.full_name, student.id] } , class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

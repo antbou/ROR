@@ -1,0 +1,23 @@
+<div class="mx-auto w-full flex flex-col">
+  <table class="text-sm font-light table-auto">
+    <thead class="border-b font-medium">
+      <tr class="text-left">
+        <th scope="col" class="px-6 py-4">Grade</th>
+        <th scope="col" class="px-6 py-4">Created at</th>
+        <th scope="col" class="px-6 py-4">Course</th>
+        <th scope="col" class="px-6 py-4">Student</th>
+        <th scope="col" class="px-6 py-4">Teacher</th>
+      </tr>
+    </thead>
+    <tbody id="grade">
+      <%= render @evaluation %>
+    </tbody>
+  </table>
+  <div class="flex justify-between items-center">
+    <%= link_to 'Edit this evaluation', edit_exam_evaluation_path(@exam, @evaluation), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to 'Destroy this evaluation', exam_evaluation_path(@exam, @evaluation), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to 'Back to evaluations', exam_evaluations_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>

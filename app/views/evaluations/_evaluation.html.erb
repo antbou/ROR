@@ -1,0 +1,13 @@
+<tr class="border-b">
+  <td class="whitespace-nowrap px-6 py-4"><%= evaluation.grade%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= evaluation.created_at%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= evaluation.exam.course.title%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= evaluation.student.full_name%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= evaluation.teacher.full_name%></td>
+  <% if action_name != "show" %>
+    <td id="<%= dom_id evaluation %>" class="whitespace-nowrap px-6 py-4">
+      <%= link_to "Show this exam", exam_evaluation_path(evaluation.exam, evaluation), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to 'Edit this exam', edit_exam_evaluation_path(evaluation.exam, evaluation), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  <% end %>
+</tr>

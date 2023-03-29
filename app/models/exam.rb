@@ -8,4 +8,5 @@ class Exam < ApplicationRecord
   belongs_to :teacher, class_name: 'User'
   belongs_to :course
   has_many :evaluations, dependent: :destroy
+  has_many :students, through: :course
 end
