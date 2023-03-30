@@ -1,5 +1,5 @@
 <tr class="border-b">
-  <td class="whitespace-nowrap px-6 py-4"><%= course.title%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= link_to course.title, course_exams_path(course.id), class: "text-gray-800 underline mb-2 hover:text-gray-200" %> </td>
   <td class="whitespace-nowrap px-6 py-4"><%= course.category.name%></td>
   <td class="whitespace-nowrap px-6 py-4">
     <%= course.teachers.map { |teacher| teacher.full_name }.join("<br>").html_safe %>

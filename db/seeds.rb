@@ -2,7 +2,7 @@
 
 city = City.create!(name: 'Paris', zip_code: '75000')
 # Create demo teacher
-teacher = Teacher.create!(first_name: 'demo', last_name: 'test', email: 'teacher@mail.com',
+teacher = Teacher.create!(first_name: 'Prof', last_name: 'CPNV', email: 'teacher@mail.com',
                           adress: '1 rue de la paix', acronym: 'dmo', city:, password: '123456')
 
 teacher2 = Teacher.create!(first_name: 'Michel', last_name: 'Le maître', email: 'teacher2@mail.com',
@@ -11,9 +11,9 @@ teacher2 = Teacher.create!(first_name: 'Michel', last_name: 'Le maître', email:
 promotion = Promotion.create!(name: 'SIT2a', start_at: Date.new(2021, 9, 1), end_at: Date.new(2022, 6, 30))
 
 # Create demo student
-student1 = Student.create!(first_name: 'deemo', last_name: 'test', email: 'student1@mail.com',
+student1 = Student.create!(first_name: 'Anthony', last_name: 'B', email: 'student1@mail.com',
                            adress: '2 rue michel', city:, password: '123456', promotion:)
-student2 = Student.create!(first_name: 'deemo2', last_name: 'test', email: 'student2@mail.com',
+student2 = Student.create!(first_name: 'Rigolo', last_name: 'Le grand', email: 'student2@mail.com',
                            adress: '2 rue michel', city:, password: '123456', promotion:)
 
 semester = Semester.create!(started_at: Date.new(2021, 9, 1), ended_at: Date.new(2021, 12, 31))
@@ -36,12 +36,12 @@ teacher.courses << course3
 exam1 = Exam.create!(name: 'Trigo', consideration: 100, passed_at: Date.new(2021, 9, 30),
                      course: course1, teacher:)
 exam2 = Exam.create!(name: 'Algébre', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course1, teacher:)
-exam3 = Exam.create!(name: 'Physique 1', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2,
+exam3 = Exam.create!(name: 'Statique', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2,
                      teacher:)
-exam4 = Exam.create!(name: 'Physique 2', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2,
+exam4 = Exam.create!(name: 'Chaleur', consideration: 100, passed_at: Date.new(2021, 9, 30), course: course2,
                      teacher:)
-exam5 = Exam.create!(name: 'Chimie 1', consideration: 33, passed_at: Date.new(2021, 9, 30), course: course3, teacher:)
-exam6 = Exam.create!(name: 'Chimie 2', consideration: 22, passed_at: Date.new(2021, 9, 30), course: course3, teacher:)
+exam5 = Exam.create!(name: 'Explosif', consideration: 33, passed_at: Date.new(2021, 9, 30), course: course3, teacher:)
+exam6 = Exam.create!(name: 'Electro', consideration: 22, passed_at: Date.new(2021, 9, 30), course: course3, teacher:)
 evaluation1 = Evaluation.create!(grade: 5, student: student1, exam: exam1, teacher:)
 evaluation2 = Evaluation.create!(grade: 4, student: student2, exam: exam1, teacher:)
 evaluation3 = Evaluation.create!(grade: 3.5, student: student1, exam: exam2, teacher:)
