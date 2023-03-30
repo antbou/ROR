@@ -124,13 +124,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_133557) do
     t.index ["student_id"], name: "index_students_promotions_on_student_id"
   end
 
-  create_table "teachers_courses", force: :cascade do |t|
+  create_table "teacher_courses", force: :cascade do |t|
     t.integer "teacher_id", null: false
     t.integer "course_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_teachers_courses_on_course_id"
-    t.index ["teacher_id"], name: "index_teachers_courses_on_teacher_id"
+    t.index ["course_id"], name: "index_teacher_courses_on_course_id"
+    t.index ["teacher_id"], name: "index_teacher_courses_on_teacher_id"
   end
 
   create_table "user_has_roles", force: :cascade do |t|
@@ -181,8 +179,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_133557) do
   add_foreign_key "student_semesters", "users", column: "student_id"
   add_foreign_key "students_promotions", "promotions"
   add_foreign_key "students_promotions", "users", column: "student_id"
-  add_foreign_key "teachers_courses", "courses"
-  add_foreign_key "teachers_courses", "users", column: "teacher_id"
+  add_foreign_key "teacher_courses", "courses"
+  add_foreign_key "teacher_courses", "users", column: "teacher_id"
   add_foreign_key "user_has_roles", "roles"
   add_foreign_key "user_has_roles", "users"
   add_foreign_key "users", "cities"

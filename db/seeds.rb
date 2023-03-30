@@ -5,6 +5,9 @@ city = City.create!(name: 'Paris', zip_code: '75000')
 teacher = Teacher.create!(first_name: 'demo', last_name: 'test', email: 'teacher@mail.com',
                           adress: '1 rue de la paix', acronym: 'dmo', city:, password: '123456')
 
+teacher2 = Teacher.create!(first_name: 'Michel', last_name: 'Le maître', email: 'teacher2@mail.com',
+                           adress: '1 rue de la paix', acronym: 'dmo', city:, password: '123456')
+
 promotion = Promotion.create!(name: 'SIT2a', start_at: Date.new(2021, 9, 1), end_at: Date.new(2022, 6, 30))
 
 # Create demo student

@@ -1,0 +1,19 @@
+<tr class="border-b">
+  <td class="whitespace-nowrap px-6 py-4"><%= course.title%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= course.category.name%></td>
+  <td class="whitespace-nowrap px-6 py-4">
+    <%= course.teachers.map { |teacher| teacher.full_name }.join("<br>").html_safe %>
+  </td>
+  <td class="whitespace-nowrap px-6 py-4">
+    <%= course.promotions.map { |promotion| promotion.name }.join("<br>").html_safe %>
+  </td>
+  <td class="whitespace-nowrap px-6 py-4"><%= course.description%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= "#{course.quarter.started_at.strftime("%d %B, %Y")} at #{course.quarter.ended_at.strftime("%d %B, %Y")}"%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= course.slug%></td>
+  <% if action_name != "show" %>
+    <td id="<%= dom_id course %>" class="whitespace-nowrap px-6 py-4">
+      <%= link_to "Show this course", course, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to 'Edit this course', edit_course_path(course), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  <% end %>
+</tr>

@@ -1,0 +1,25 @@
+<div class="mx-auto w-full flex flex-col">
+  <table class="text-sm font-light table-auto">
+    <thead class="border-b font-medium">
+      <tr class="text-left">
+        <th scope="col" class="px-6 py-4">Title</th>
+        <th scope="col" class="px-6 py-4">Category</th>
+        <th scope="col" class="px-6 py-4">Teachers</th>
+        <th scope="col" class="px-6 py-4">Promotions</th>
+        <th scope="col" class="px-6 py-4">Description</th>
+        <th scope="col" class="px-6 py-4">Date</th>
+        <th scope="col" class="px-6 py-4">Slug</th>
+      </tr>
+    </thead>
+    <tbody id="grade">
+      <%= render @course %>
+    </tbody>
+  </table>
+  <div class="flex justify-between items-center">
+    <%= link_to 'Edit this course', edit_course_path(@course), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to 'Destroy this course', course_path(@course), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to 'Back to courses', courses_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>

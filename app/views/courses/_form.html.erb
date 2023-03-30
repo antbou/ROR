@@ -1,0 +1,63 @@
+<%= form_with(model: course, class: "contents") do |form| %>
+  <div class="mx-auto">
+    <div class="flex flex-wrap -m-2">
+      <% if course.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+          <ul>
+            <% course.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :title, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.text_field :title, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :slug, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.text_field :slug, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :description, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.text_field :description, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :quarter_id, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.select :quarter_id, options_for_select(Quarter.all.map{ |quarter| ["#{quarter.started_at.strftime("%d %B, %Y")} at #{quarter.ended_at.strftime("%d %B, %Y")}", quarter.id] }), { include_blank: true }, class: "form-control" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :category_id, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.select :category_id, options_for_select(Category.all.map{ |category| [category.name, category.id] }), { include_blank: true }, class: "form-control" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :teacher_ids, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.select :teacher_ids, options_for_select(Teacher.all.map{ |teacher| [teacher.full_name, teacher.id] }), { include_blank: true }, { class: "form-control", multiple: true } %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :promotion_ids, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.select :promotion_ids, options_for_select(Promotion.all.map{ |promotion| [promotion.name, promotion.id] }), { include_blank: true }, { class: "form-control", multiple: true } %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
