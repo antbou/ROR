@@ -1,11 +1,19 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
-    <%= render @promotion %>
-
+<div class="mx-auto w-full flex flex-col">
+  <table class="text-sm font-light table-auto">
+    <thead class="border-b font-medium">
+      <tr class="text-left">
+        <th scope="col" class="px-6 py-4">Name</th>
+        <th scope="col" class="px-6 py-4">Courses</th>
+        <th scope="col" class="px-6 py-4">Students</th>
+        <th scope="col" class="px-6 py-4">Started at</th>
+        <th scope="col" class="px-6 py-4">Ended at</th>
+      </tr>
+    </thead>
+    <tbody id="promotion">
+      <%= render @promotion %>
+    </tbody>
+  </table>
+  <div class="flex justify-between items-center">
     <%= link_to 'Edit this promotion', edit_promotion_path(@promotion), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Destroy this promotion', promotion_path(@promotion), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>

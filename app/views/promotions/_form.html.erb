@@ -1,17 +1,45 @@
 <%= form_with(model: promotion, class: "contents") do |form| %>
-  <% if promotion.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(promotion.errors.count, "error") %> prohibited this promotion from being saved:</h2>
-
-      <ul>
-        <% promotion.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="mx-auto">
+    <div class="flex flex-wrap -m-2">
+      <% if promotion.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(promotion.errors.count, "error") %> prohibited this promotion from being saved:</h2>
+          <ul>
+            <% promotion.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :name, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.text_field :name, class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :start_at, class: "leading-7 text-sm text-gray-600" %>
+          <%= form.date_field :start_at, value: "%Y-%m-%d", class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :end_at, class: "leading-7 text-sm text-gray-600" %>
+          <%= form.date_field :end_at, value: "%Y-%m-%d", class: "w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.label :student_ids, class: "leading-7 text-sm text-gray-600" %><br>
+          <%= form.select :student_ids, options_for_select(Student.all.map{ |student| [student.full_name, student.id] }), { include_blank: true }, { class: "form-control", multiple: true } %>
+        </div>
+      </div>
+      <div class="p-2 w-full">
+        <div class="relative">
+          <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

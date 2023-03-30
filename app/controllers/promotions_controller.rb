@@ -20,27 +20,28 @@ class PromotionsController < ApplicationController
   # POST /promotions or /promotions.json
   def create
     @promotion = Promotion.new(promotion_params)
+    student_ids = params[:promotion][:student_ids]
 
     respond_to do |format|
       if @promotion.save
+        @promotion.students = Student.where(id: student_ids.reject(&:empty?).map(&:to_i))
         format.html { redirect_to promotion_url(@promotion), notice: 'Promotion was successfully created.' }
-        format.json { render :show, status: :created, location: @promotion }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @promotion.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /promotions/1 or /promotions/1.json
   def update
+    student_ids = params[:promotion][:student_ids]
     respond_to do |format|
       if @promotion.update(promotion_params)
+        @promotion.students = Student.where(id: student_ids.reject(&:empty?).map(&:to_i))
+
         format.html { redirect_to promotion_url(@promotion), notice: 'Promotion was successfully updated.' }
-        format.json { render :show, status: :ok, location: @promotion }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @promotion.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,7 +52,6 @@ class PromotionsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to promotions_url, notice: 'Promotion was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -64,6 +64,6 @@ class PromotionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def promotion_params
-    params.fetch(:promotion, {})
+    params.require(:promotion).permit(:name, :start_at, :end_at)
   end
 end

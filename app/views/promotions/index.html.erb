@@ -1,14 +1,29 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Promotions</h1>
-    <%= link_to 'New promotion', new_promotion_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <%= link_to 'New course', new_promotion_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
-
-  <div id="promotions" class="min-w-full">
-    <%= render @promotions %>
+  <div class="flex flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+        <div class="overflow-hidden">
+          <table class="text-sm font-light table-auto">
+            <thead class="border-b font-medium">
+              <tr class="text-left">
+                <th scope="col" class="px-6 py-4">Name</th>
+                <th scope="col" class="px-6 py-4">Courses</th>
+                <th scope="col" class="px-6 py-4">Started at</th>
+                <th scope="col" class="px-6 py-4">Ended at</th>
+              </tr>
+            </thead>
+            <tbody id="promotions">
+              <% @promotions.each do |promotion| %>
+                <%= render promotion %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

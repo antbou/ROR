@@ -1,7 +1,19 @@
-<div id="<%= dom_id promotion %>">
-  <% if action_name != "show" %>
-    <%= link_to "Show this promotion", promotion, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this promotion', edit_promotion_path(promotion), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+<tr class="border-b">
+  <td class="whitespace-nowrap px-6 py-4"><%= promotion.name%></td>
+  <td class="whitespace-nowrap px-6 py-4">
+    <%= promotion.courses.map { |course| course.title }.join("<br>").html_safe %>
+  </td>
+  <% if action_name == "show" %>
+    <td class="whitespace-nowrap px-6 py-4">
+      <%= promotion.students.map { |student| student.full_name }.join("<br>").html_safe %>
+    </td>
   <% end %>
-</div>
+  <td class="whitespace-nowrap px-6 py-4"><%= promotion.start_at.strftime("%d %B, %Y")%></td>
+  <td class="whitespace-nowrap px-6 py-4"><%= promotion.end_at.strftime("%d %B, %Y")%></td>
+  <% if action_name != "show" %>
+    <td id="<%= dom_id promotion %>" class="whitespace-nowrap px-6 py-4">
+      <%= link_to "Show this promotion", promotion, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to 'Edit this promotion', edit_promotion_path(promotion), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </td>
+  <% end %>
+</tr>
