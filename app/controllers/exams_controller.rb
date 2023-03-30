@@ -48,8 +48,7 @@ class ExamsController < ApplicationController
     @exam.destroy
 
     respond_to do |format|
-      format.html { redirect_to course_exam_url(@course, @exam), notice: 'Exam was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to course_exams_url(@course), notice: 'Exam was successfully destroyed.' }
     end
   end
 
